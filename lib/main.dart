@@ -58,62 +58,70 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('ぱたぱた時計', style: TextStyle(fontSize: 32)),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 0.8,
-              color: Colors.blueGrey,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlipWidget(subject: _subject, func: (dt) => dt.minute ~/ 10),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlipWidget(subject: _subject, func: (dt) => dt.minute % 10),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0, left: 15.0),
-                    child: Text(
-                      '分',
-                      style: TextStyle(fontSize: 50),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 0.8,
-              color: Colors.grey,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlipWidget(subject: _subject, func: (dt) => dt.second ~/ 10),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlipWidget(
-                        subject: _subject, func: (dt) => dt.second % 10),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0, left: 20.0),
-                    child: Text(
-                      '秒',
-                      style: TextStyle(fontSize: 50),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+          minuteFlipWidget(),
+          secondsFlipWidget(),
         ],
+      ),
+    );
+  }
+
+  Widget minuteFlipWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 0.8,
+        color: Colors.blueGrey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: FlipWidget(subject: _subject, func: (dt) => dt.minute ~/ 10),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: FlipWidget(subject: _subject, func: (dt) => dt.minute % 10),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0, left: 15.0),
+              child: Text(
+                '分',
+                style: TextStyle(fontSize: 50),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget secondsFlipWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 0.8,
+        color: Colors.grey,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: FlipWidget(subject: _subject, func: (dt) => dt.second ~/ 10),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: FlipWidget(
+                  subject: _subject, func: (dt) => dt.second % 10),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0, left: 20.0),
+              child: Text(
+                '秒',
+                style: TextStyle(fontSize: 50),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
