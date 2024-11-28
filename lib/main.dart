@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Timer _timer;
+  late Timer _timer;
   final PublishSubject<DateTime> _subject = PublishSubject<DateTime>();
 
   @override
@@ -124,7 +124,7 @@ typedef TResult Func<T, TResult>(T source);
 class FlipWidget extends StatefulWidget {
   final Func<DateTime, int> func;
   final PublishSubject<DateTime> subject;
-  FlipWidget({Key key, this.subject, this.func}) : super(key: key);
+  FlipWidget({Key? key, required this.subject, required this.func}) : super(key: key);
 
   @override
   _FlipWidgetState createState() => _FlipWidgetState();
@@ -132,13 +132,13 @@ class FlipWidget extends StatefulWidget {
 
 class _FlipWidgetState extends State<FlipWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation _halfTopFlipAnimation;
-  Animation _halfBottomFlipAnimation;
-  Stream<DateTime> stream;
+  late AnimationController _animationController;
+  late Animation _halfTopFlipAnimation;
+  late Animation _halfBottomFlipAnimation;
+  late Stream<DateTime> stream;
 
-  Widget _child1;
-  Widget _backCard;
+  late Widget _child1;
+  late Widget _backCard;
   int _oldTime = 0;
   int _newTime = 0;
 
@@ -224,7 +224,7 @@ class _FlipWidgetState extends State<FlipWidget>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
-      builder: (BuildContext context, Widget widget) {
+      builder: (BuildContext context, Widget? widget) {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
